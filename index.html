@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"> <!-- Codificación de caracteres UTF-8 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<!--Ajuste para dispositivos móviles -->
+<title>3D Image Gallery</title> <!-- Título de la página -->
+<link rel="stylesheet" href="Galeria.css"> <!-- Enlace al archivo de 
+estilos CSS -->
+</head>
+<body>
+<div class="container"> <!-- Contenedor principal de la galería -->
+<div class="box"> <!-- Caja que contiene todas las imágenes, y que se 
+rotará en 3D -->
+<!-- Cada imagen está envuelta en un <span> que usa una variable CSS 
+(--i) para ubicarla alrededor de un círculo -->
+<span style="--i:1;"><img src="imagen2.jpg" alt=""></span>
+<span style="--i:2;"><img src="imagen3.png" alt=""></span>
+<span style="--i:3;"><img src="imagen4.jpg" alt=""></span>
+<span style="--i:4;"><img src="imagen5.jpg" alt=""></span>
+<span style="--i:5;"><img src="imagen6.jpg" alt=""></span>
+<span style="--i:6;"><img src="imagen7.jpg" alt=""></span>
+<span style="--i:7;"><img src="imagen8.jpg" alt=""></span>
+<span style="--i:8;"><img src="imagen9.jpg" alt=""></span>
+</div>
+<!-- Botones de navegación -->
+<div class="btns">
+<div class="btn prev"></div> <!-- Botón para rotar a la izquierda -->
+<div class="btn next"></div> <!-- Botón para rotar a la derecha -->
+</div>
+</div>
+<script>
+// Seleccionamos los elementos necesarios del DOM
+let prev = document.querySelector('.prev'); // Botón "anterior"
+let next = document.querySelector('.next'); // Botón "siguiente"
+let box = document.querySelector('.box'); // Contenedor de imágenes
+
+let dagrees = 0; // Variable para llevar la cuenta del ángulo de rotación
+
+// Evento para el botón "anterior"
+prev.addEventListener('click', function() {
+dagrees -= 45; // Aumenta 45 grados (rotación hacia un lado)
+box.style.transform = `perspective(1000px) rotateY(${dagrees}deg)`; 
+// Aplica la rotación 3D necesitando las comillas simples de forma invertida.
+});
+
+// Evento para el botón "siguiente"
+next.addEventListener('click', function() {
+dagrees += 45; // Disminuye 45 grados (rotación al contrario que prev)
+box.style.transform = `perspective(1000px) rotateY(${dagrees}deg)`; 
+// Aplica la rotación 3D
+});
+</script>
+</body>
+</html>
